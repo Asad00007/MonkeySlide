@@ -1,0 +1,5 @@
+.customShadow{
+    box-shadow: inset 20px 20px 60px #0f0f0f,
+            inset -20px -20px 60px #151515;
+            background: gray;
+}
