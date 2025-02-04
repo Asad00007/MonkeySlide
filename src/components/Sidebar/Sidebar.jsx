@@ -62,7 +62,7 @@ const Sidebar = () => {
       <div
         className={`${
           sideBar ? "w-[250px] gap-5" : "w-[70px] gap-7"
-        } bg-[#0d0c0e] relative  text-white py-10 px-3 h-full flex flex-col items-center border-r-2 border-gray-500 transition-all duration-300 ease-in-out`}
+        } bg-[#0d0c0e] relative  text-white py-10 px-3 h-full flex flex-col items-center border-r-2 border-[#4a556557] transition-all duration-300 ease-in-out`}
         
       >
         <div className="absolute top-0 w-[50px] h-[50px] bg-white rounded-full shadow-[0px_0px_50px_rbga(255,255,255,0.1)] blur-3xl"></div>
@@ -78,7 +78,7 @@ const Sidebar = () => {
           <FaGift />
         )}
         {sideBar ? (
-          <div className="p-2.5 px-4 text-[14px] border border-gray-500 rounded-full w-full flex items-center customShadow justify-between">
+          <div className="p-2.5 px-4 text-[14px] border border-[#4a556557] rounded-full w-full flex items-center customShadow justify-between">
             <span className="text-gray-400">Search games</span>
             <FaSearch className="text-xl" />
           </div>
@@ -99,7 +99,7 @@ const Sidebar = () => {
           ))}
         </div>
         <div
-          className="absolute -right-4.5 top-3 p-2 rounded-full border border-gray-200 z-50 bg-[#18181b] cursor-pointer"
+          className="absolute -right-4.5 top-3 p-2 rounded-full border border-[#4a556557] z-50 bg-[#18181b] cursor-pointer"
           onClick={() => setSideBar(!sideBar)}
         >
           <FaChevronLeft className="text-[14px]" />
