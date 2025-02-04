@@ -6,7 +6,7 @@ import { BiWorld } from "react-icons/bi";
 
 const Navbar = () => {
   return (
-    <div className='bg-[#0E0E11] border-[#e5e7eb] p-4 px-[2%] flex items-center justify-between @container border-b  border-b-gray-700 sticky top-0 left-0'>
+    <div className='bg-[#0E0E11] border-[#e5e7eb] z-50 p-4 px-[2%] flex items-center justify-between @container border-b-2  border-b-gray-600 sticky top-0 left-0'>
         
 
         <div className='absolute left-[50%] w-[50px] h-[50px] bg-white rounded-full shadow-[0px_0px_50px_rbga(255,255,255,0.1)] blur-3xl'></div>
