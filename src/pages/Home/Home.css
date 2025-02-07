@@ -1,5 +1,10 @@
 .text-stroke-3 {
-    -webkit-text-stroke: 2px #fbbe2479;
+  text-shadow: 0px 10px 12px rgba(244,220,3,0.25);
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #f4dc03;
+  background: linear-gradient(107deg,rgba(244, 220, 3, 0.887) 80%, rgba(244,220,3,0.1) 100%);
+  background-clip: text;
+  color: transparent;
 }
 
 .bg-multiple-images{
@@ -9,3 +14,45 @@
     background-size: contain, contain;
     z-index: 1;
 }
+
+.imperial-script-regular {
+    font-family: "Imperial Script", serif;
+    font-style: normal;
+  }
+  .lilita-one-regular {
+    font-family: "Lilita One", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  .swiper {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    /* background: #fff; */
+  
+    /* Center slide text vertically */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .gradient-text{
+    text-shadow: 0px 10px 12px rgba(244,220,3,0.25);
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #f4dc03;
+    background: linear-gradient(107deg,rgba(244,220,3,0.6) -22%, rgba(244,220,3,0.1) 99.78%);
+    background-clip: text;
+    color: transparent;
+  }
