@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import HeaderLogo from "../../assets/icons/headerlogo.webp";
 import Coin from "../../assets/videos/MonkeyTiltCoinAlpha.webm";
@@ -25,8 +25,11 @@ import "swiper/css/bundle";
 import "./Home.css";
 import { Pagination, Autoplay } from "swiper/modules";
 import { FaChevronDown } from "react-icons/fa";
+import Footer from "../../components/Footer/Footer";
 
 const Home = () => {
+  const [bets, setBets] = useState(10);
+  const [togglebets, setTogglebets] = useState(false);
   return (
     <div className="relative flex-1 ml-[70px] 2xl:ml-0">
       <div className="absolute -top-20 right-1/2 w-[70px] h-[70px] bg-white rounded-full shadow-[0px_0px_50px_rbga(255,255,255,0.1)] blur-3xl"></div>
@@ -106,7 +109,7 @@ const Home = () => {
               </div>
             </div>
             <div className="bg-[#16141f] hover:bg-[#1b1827] row-span-9 rounded-4xl col-span-3 overflow-hidden relative border-2 border-[#43386180] hover:border-[#433861] flex items-center justify-between group transition ease-in-out duration-300 px-5">
-              <div className="absolute -bottom-5 right-2 w-[150px] h-[150px] bg-[#7645f3] rounded-full shadow-[0px_0px_50px_#53411c] blur-3xl"></div>
+              <div className="absolute -bottom-5 right-2 w-[150px] h-[150px] bg-[#9064ff] rounded-full shadow-[0px_0px_50px_#53411c] blur-3xl"></div>
               <div>
                 <h1 className="text-4xl bg-gradient-to-b from-white to-gray-500 font-bold text-transparent bg-clip-text">
                   TILT CLUB
@@ -351,7 +354,7 @@ const Home = () => {
               cssMode={false}
               loopAdditionalSlides={5}
               modules={[Pagination, Autoplay]}
-              className="mySwiper my-5 swiper  "
+              className="mySwiper my-5 swiper relative"
               breakpoints={{
                 450: { slidesPerView: 1, spaceBetween: 5 },
                 640: { slidesPerView: 2, spaceBetween: 5 },
@@ -367,6 +370,7 @@ const Home = () => {
                 document.querySelector(".swiper").swiper.autoplay.start()
               }
             >
+              <div className="absolute bg-[#0d0d0f] w-[60px] h-full top-0 -right-10 z-40 blur-sm"></div>
               {Array.from({ length: 13 }, (_, i) => (
                 <SwiperSlide key={i} className="text-white flex flex-col">
                   <img
@@ -426,14 +430,58 @@ const Home = () => {
                 </span>
               </div>
             </div>
-            <div className="bg-[rgba(0,0,0,0.75)] border border-b-0 rounded-2xl text-white w-full -mt-7  backdrop-blur-md border-white/20  shadow-lg z-20 p-5">
+            <div className="bg-[rgba(0,0,0,0.75)] border border-b-0 rounded-2xl text-white w-full -mt-7  backdrop-blur-md border-white/20  shadow-lg z-20 p-5 relative">
+              <div className="absolute bottom-0 left-0 w-full bg-[rgba(0,0,0,0.75)] h-30 shadow-[0px_0px_20px_rgba(0,0,0,0.75)] blur-md"></div>
               <div className="flex items-center justify-between border-b border-[#4a556557] py-2">
                 <h1 className="text-xl">Latest Bets</h1>
-                <div className="py-1 px-3 font-semibold flex items-center gap-2  bg-gradient-to-br from-[hsla(0,0%,100%,.2)] from-[1.96%]  to-[hsla(0,0%,100%,.05)] to-[81.81%] border border-gray-700 hover:from-[hsla(0,0%,100%,.5)] transition ease-in-out duration-300 rounded-xl text-[14px] ">
-                  10 <FaChevronDown />
+                <div
+                  className="py-1 px-3 relative font-semibold flex items-center gap-2  bg-gradient-to-br from-[hsla(0,0%,100%,.2)] from-[1.96%]  to-[hsla(0,0%,100%,.05)] to-[81.81%] border border-gray-700  transition ease-in-out duration-300 rounded-xl text-[14px] "
+                  onClick={() => {
+                    setTogglebets(!togglebets);
+                  }}
+                >
+                  {bets} <FaChevronDown />
+                  <div
+                    className={`absolute bg-gradient-to-br from-[hsla(0,0%,100%,.2)] from-[1.96%]  to-[hsla(0,0%,100%,.05)] to-[81.81%] border border-gray-700  transition ease-in-out duration-300 rounded-xl top-[110%] w-[90px] right-0 bg-black ${
+                      togglebets ? "opacity-100 scale-100" : "opacity-0 scale-0"
+                    } origin-top-right`}
+                  >
+                    {/* Below is event delegation example where we create an event listener on the top most element rather than all other elements */}
+                    <ul
+                      className="p-3 px-2 space-y-1"
+                      onClick={(e) => {
+                        const value = parseInt(e.target.dataset.value, 10);
+                        //dataset allows you to access custom data attributes (data-*) on an HTML element.
+                        // The 10 ensures parseInt treats the string as a decimal number.
+                        //we use parseInt because dataset.value always returns a string
+                        if (!isNaN(value)) setBets(value);
+                        //Example
+                        //<button data-id="123" data-name="Asad">Click Me</button>
+                        // const button = document.querySelector("button");
+                        // console.log(button.dataset.id); // "123"
+                        // console.log(button.dataset.name); // "Asad"
+                      }}
+                    >
+                      {[10, 20, 30, 40].map((value) => {
+                        return (
+                          <li
+                            key={value}
+                            data-value={value}
+                            className={`p-1 px-2 rounded-md cursor-pointer ${
+                              bets === value
+                                ? "bg-[rgba(240,220,15,0.15)] text-amber-100"
+                                : "hover:bg-[rgba(0,0,0,0.25)]"
+                            }`}
+                          >
+                            {value}
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
                 </div>
               </div>
-              <table className="w-full my-4 text-left text-gray-400 text-[14px]">
+              <table className="w-full my-4 text-left text-gray-400 text-[14px] border-separate border-spacing-y-3">
                 <thead>
                   <tr>
                     <th>Game</th>
@@ -443,28 +491,35 @@ const Home = () => {
                     <th>Payout</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-gray-700">
-                  {Array.from({ length: 10 }, (_, i) => (
-                    <tr key={i}>
-                      <td className="flex items-center gap-2 whitespace-nowrap">
+                <tbody className="divide-y divide-gray-700 ">
+                  {Array.from({ length: bets }, (_, i) => (
+                    <tr
+                      key={i}
+                      className={`${
+                        i % 2 === 0 ? "bg-[rgba(54,53,53,0.25)]" : ""
+                      }`}
+                    >
+                      <td className="p-1 rounded-md">
                         <img
                           src={Original3}
                           alt="Profile"
-                          className="w-[25px] rounded-sm aspect-3/4"
+                          className="w-[25px] rounded-sm aspect-3/4 inline-block"
                         />
-                        <p className="text-white">Blackjack</p>
+                        <p className="text-white inline ml-2">Blackjack</p>
                       </td>
-                      <td className="flex items-center gap-2 whitespace-nowrap">
+                      <td className="p-1 rounded-md">
                         <img
                           src={Blind}
                           alt="Profile"
-                          className="w-[25px] rounded-sm "
+                          className="w-[25px] rounded-sm inline-block"
                         />
-                        <p className="text-white">pnjgames</p>
+                        <p className="text-white inline ml-2">pnjgames</p>
                       </td>
-                      <td>{new Date().toLocaleTimeString("en")}</td>
-                      <td>$30</td>
-                      <td>$5</td>
+                      <td className="p-1 rounded-md">
+                        {new Date().toLocaleTimeString("en")}
+                      </td>
+                      <td className="p-1 rounded-md">$30</td>
+                      <td className="p-1 rounded-md">$5</td>
                     </tr>
                   ))}
                 </tbody>
@@ -472,6 +527,7 @@ const Home = () => {
             </div>
           </div>
         </div>
+        <Footer />
       </div>
     </div>
   );
