@@ -38,7 +38,7 @@ const Home = () => {
         <div className="absolute -top-20 left-0 w-[70px] h-[70px] bg-white rounded-full shadow-[0px_0px_50px_rbga(255,255,255,0.1)] blur-3xl"></div>
         <div className="absolute -top-20 left-1/2 w-[70px] h-[70px] bg-white rounded-full shadow-[0px_0px_50px_rbga(255,255,255,0.1)] blur-3xl"></div>
         <div className="absolute -top-20 right-0 w-[150px] h-[150px] bg-white rounded-full shadow-[0px_0px_50px_rbga(255,255,255,0.1)] blur-3xl"></div>
-        <div className="w-[1300px] max-w-full mx-auto py-10">
+        <div className="w-[1150px] max-w-full mx-auto py-10">
           <div className="flex items-center justify-between gap-3 ">
             <h1 className="uppercase md:text-[40px] lg:text-[64px] font-bold bg-gradient-to-r from-[#fdc70000]  to-gray-600  text-transparent bg-clip-text drop-shadow-md [text-shadow:_0_4px_4px_rgb(254_222_36_/_0.8)] ">
               <span className="gradient-text">Welcome to </span>
@@ -192,7 +192,7 @@ const Home = () => {
                   spaceBetween: 20,
                 },
                 1450: {
-                  slidesPerView: 7,
+                  slidesPerView: 6,
                   spaceBetween: 30,
                 },
               }}
@@ -252,7 +252,7 @@ const Home = () => {
                   spaceBetween: 20,
                 },
                 1450: {
-                  slidesPerView: 7,
+                  slidesPerView: 6,
                   spaceBetween: 30,
                 },
               }}
@@ -312,7 +312,7 @@ const Home = () => {
                   spaceBetween: 20,
                 },
                 1450: {
-                  slidesPerView: 7,
+                  slidesPerView: 6,
                   spaceBetween: 30,
                 },
               }}
